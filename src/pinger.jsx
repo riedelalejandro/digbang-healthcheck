@@ -32,6 +32,7 @@ function Pinger({ name }) {
             <div className="pinger__title">IP o ruta para <span className="pinger__name">{name}</span></div>
             <div className="pinger__box">
                 <input
+                    onKeyDown={(e) => e.key === 'Enter' && handleClick()}
                     onChange={(e) => setInputValue(e.target.value)}
                     placeholder="https://..."
                     className="pinger__input"
@@ -43,7 +44,7 @@ function Pinger({ name }) {
             {loading && <div className="pinger__loading"><div className="pinger__loading-pokeball" /></div>}
             {pinged && !loading && (
                 <div className={c('pinger__status-box', success ? 'success' : 'failed')}>
-                    {success ? <div>Conexión exitosa :)</div> : <div>Conexión Fallida :(</div>}
+                    {success ? <div>Conexión Exitosa :)</div> : <div>Conexión Fallida :(</div>}
                 </div>
             )}
         </div>
